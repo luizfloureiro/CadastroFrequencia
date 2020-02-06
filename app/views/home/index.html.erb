@@ -1,6 +1,20 @@
-<h1>Home</h1>
-<p>
-  textotextotextotextotextotextotextotexto<br>
-  textotextotextotextotextotextotextotexto<br>
-  textotextotextotextotextotextotextotexto<br>
-</p>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-10">
+        <h1>Home</h1>
+        <p>
+          textotextotextotextotextotextotextotexto<br>
+          textotextotextotextotextotextotextotexto<br>
+          textotextotextotextotextotextotextotexto<br>
+        </p>
+      </div>
+      <div class="col-2">
+        <%= image_tag "cafe-sapo.jpeg", :class => "img-thumbnail rounded"%>
+      </div>
+    </div>
+  </div>
+  <div class="lead">
+    <%= link_to 'Login', new_user_session_path %> ou <%= link_to 'Cadastrar um novo usuário', new_user_registration_path %>
+  </div>
+</div>
