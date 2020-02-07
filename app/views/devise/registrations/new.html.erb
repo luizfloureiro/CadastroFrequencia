@@ -25,6 +25,12 @@
   </div>
 
   <div class="form-group">
+    <div class="select-field">
+      <%= select_tag(:cargo, options_for_select(%w(Admin Secretaria Professor)), include_blank: "Selecione um cargo") %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="field">
       <%= f.label :password, "Senha" %><br />
       <%= f.password_field :password, autocomplete: "new-password", :class => "form-control" %>

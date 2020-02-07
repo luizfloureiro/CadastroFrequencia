@@ -12,9 +12,21 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <% if current_user %>
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="/">Abc</a>
+          <form class="form-inline">
+            <div class="btn-group" role="group">
+              <button class="btn btn-outline-primary" type="button">Cadastrar novo usuário</button>
+              <button class="btn btn-outline-danger" href=destroy_user_session_path type="button">Log Out</button>
+            </div>
+          </form>
+        </nav>
+      <% end %>
+      <%= flash_messages %>
 
-  <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>
