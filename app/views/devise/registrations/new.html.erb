@@ -26,7 +26,14 @@
 
   <div class="form-group">
     <div class="select-field">
-      <%= select_tag(:cargo, options_for_select(%w(Admin Secretaria Professor)), include_blank: "Selecione um cargo") %>
+      <%= f.label :cargo, "Cargo" %><br />
+
+      <% if current_user %>
+        <%= f.select :cargo, gera_cargo(current_user.cargo) %>
+      <% else %>
+        <%= f.select :cargo, %w(Admin Secretaria Professor) %>
+      <% end %>
+
     </div>
   </div>
 
