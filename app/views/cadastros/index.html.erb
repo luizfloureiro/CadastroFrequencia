@@ -27,8 +27,8 @@
             <td><%= user.email %></td>
             <td><%= user.cargo %></td>
             <% if user.cargo == "Admin" || user.cargo == "Secretaria" || user.cargo.nil? %>
-              <td class="text-center"><%= link_to 'Editar', edit_cadastro_path(user), :class=>"btn btn-secondary btn-sm" %></td>
-              <td class="text-center"><%= link_to 'Remover', '#', :class=>"btn btn-danger btn-sm" %></td>
+              <td class="text-center"><%= link_to 'Editar', edit_cadastro_path(user), class: "btn btn-secondary btn-sm" %></td>
+              <td class="text-center"><%= link_to 'Remover', cadastro_path(user), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %></td>
             <% end %>
           </tr>
         <% end %>
@@ -36,7 +36,7 @@
     </table>
 
     <div class="text-right">
-      <%= link_to "Cadastrar novo usuário", new_cadastro_path, :class => "btn btn-lg btn-light text-primary" %>
+      <%= link_to "Cadastrar novo usuário", new_cadastro_path, class: "btn btn-lg btn-light text-primary" %>
     </div>
 
   </div>
@@ -44,6 +44,9 @@
 
 <% elsif current_user.cargo == "Secretaria" %>
   <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Menu Secretaria</h2>
+  <div class="text-right">
+    <%= link_to "Cadastrar novo usuário", new_cadastro_path, class: "btn btn-lg btn-light text-primary" %>
+  </div>
 <% elsif current_user.cargo == "Professor" %>
   <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Menu Professor</h2>
 <% else %>

@@ -14,7 +14,7 @@
   <body>
     <div class="container">
       <% if current_user %>
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar sticky-top navbar-dark bg-dark">
           <a class="navbar-brand" href="/">Abc</a>
           <span style="color:white">Olá, <%= current_user.nome %> | <%= current_user.matricula %> | <%= current_user.email %> | <%= current_user.cargo %></span>
 

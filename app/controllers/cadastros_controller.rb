@@ -49,7 +49,7 @@ class CadastrosController < ApplicationController
 
   private
   def authorize_admin
-    return if current_user.admin?
+    return if current_user.admin? || current_user.secretaria?
     redirect_to root_path, alert: 'Apenas administradores.'
   end
 
