@@ -1,67 +1,77 @@
 <div class="container">
-  <h2 class="text-center">Cadastro de usuário</h2>
+  <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Cadastro de usuário</h2>
 
   <%= render "devise/shared/error_messages", resource: @user %>
+  <div class="container">
 
-  <%= form_with model: @user, url: create_user_path do |f| %>
-    <div class="form-group">
-      <div class="field">
-        <%= f.label :nome, "Nome" %><br />
-        <%= f.text_field :nome, autofocus:true, autocomplete: "nome", :class => "form-control" %>
+    <%= form_with model: @user, url: cadastros_path, method: :post do |f| %>
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :nome, "Nome" %><br />
+          <%= f.text_field :nome, autofocus:true, autocomplete: "nome", :class => "form-control" %>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="field">
-        <%= f.label :matricula, "Matrícula" %><br />
-        <%= f.text_field :matricula, autocomplete: "matricula", :class => "form-control" %>
+      <div class="row">
+
+        <div class="col-3">
+          <div class="form-group">
+            <div class="field">
+              <%= f.label :matricula, "Matrícula" %><br />
+              <%= f.text_field :matricula, autocomplete: "matricula", :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="form-group">
+            <div class="field">
+              <%= f.label :email, "E-mail" %><br />
+              <%= f.email_field :email, autocomplete: "email", :class => "form-control" %>
+              <small id="email-help" class="form-text text-muted">Seu e-mail será usado para recuperação de senha.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group">
+            <div class="select-field">
+              <%= f.label :cargo, "Cargo" %><br />
+
+              <% if current_user %>
+                <%= f.select :cargo, gera_cargos(current_user) %>
+              <% else %>
+                <%= f.select :cargo, %w(Admin Secretaria Professor) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="field">
-        <%= f.label :email, "E-mail" %><br />
-        <%= f.email_field :email, autocomplete: "email", :class => "form-control" %>
-        <small id="email-help" class="form-text text-muted">Seu e-mail será usado para recuperação de senha.</small>
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :password, "Senha" %><br />
+          <%= f.password_field :password, autocomplete: "new-password", :class => "form-control" %>
+          <small id="password-help" class="form-text text-muted">
+            <% if @minimum_password_length %>
+              Mínimo de <%= @minimum_password_length %> caracteres.
+            <% end %>
+          </small>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="select-field">
-        <%= f.label :cargo, "Cargo" %><br />
-
-        <% if current_user %>
-          <%= f.select :cargo, gera_cargos(current_user) %>
-        <% else %>
-          <%= f.select :cargo, %w(Admin Secretaria Professor) %>
-        <% end %>
-
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :password_confirmation, "Confirme sua senha" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <div class="field">
-        <%= f.label :password, "Senha" %><br />
-        <%= f.password_field :password, autocomplete: "new-password", :class => "form-control" %>
-        <small id="password-help" class="form-text text-muted">
-          <% if @minimum_password_length %>
-            Mínimo de <%= @minimum_password_length %> caracteres.
-          <% end %>
-        </small>
+      <div class="actions text-center">
+        <%= f.submit "Sign up", :class => "btn btn-lg btn-outline-primary" %>
       </div>
-    </div>
-
-    <div class="form-group">
-      <div class="field">
-        <%= f.label :password_confirmation, "Confirme sua senha" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
-      </div>
-    </div>
-
-    <div class="actions text-center">
-      <%= f.submit "Sign up", :class => "btn btn-lg btn-outline-primary" %>
-    </div>
-  <% end %>
-
+    <% end %>
+  </div>
 
 </div>

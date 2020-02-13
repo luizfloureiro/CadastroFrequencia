@@ -25,8 +25,8 @@
             <td><%= user.matricula %></td>
             <td><%= user.cargo %></td>
             <% if user.cargo == "Admin" || user.cargo == "Secretaria" || user.cargo.nil? %>
-              <td class="text-center"><%= button_to 'Editar', '#', :class=>"btn btn-secondary btn-sm" %></td>
-              <td class="text-center"><%= button_to 'Remover', '#', :class=>"btn btn-danger btn-sm" %></td>
+              <td class="text-center"><%= link_to 'Editar', '#', :class=>"btn btn-secondary btn-sm" %></td>
+              <td class="text-center"><%= link_to 'Remover', '#', :class=>"btn btn-danger btn-sm" %></td>
             <% end %>
           </tr>
         <% end %>
@@ -34,16 +34,16 @@
     </table>
 
     <div class="text-right">
-      <%= button_to "Cadastrar novo usuário", new_cadastro_path, :method => :get, :class => "btn btn-lg btn-light text-primary" %>
+      <%= link_to "Cadastrar novo usuário", new_cadastro_path, :class => "btn btn-lg btn-light text-primary" %>
     </div>
 
   </div>
 
 
-<% elsif currenet_user.cargo == "Secretaria" %>
-  <h2>Menu Secretaria</h2>
+<% elsif current_user.cargo == "Secretaria" %>
+  <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Menu Secretaria</h2>
 <% elsif current_user.cargo == "Professor" %>
-  <h2>Menu Professor</h2>
+  <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Menu Professor</h2>
 <% else %>
   <h2>Alguma coisa deu muito errado e você não deveria estar aqui.</h2>
 <% end %>
