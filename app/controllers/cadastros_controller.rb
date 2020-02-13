@@ -13,7 +13,7 @@ class CadastrosController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
   def create
@@ -21,13 +21,18 @@ class CadastrosController < ApplicationController
     if @user.save
       redirect_to root_path, notice: "Usuário cadastrado com sucesso."
     else
-      debugger
       render :new
     end
   end
 
   def update
-    
+    @user = User.find(params[:id])
+    debugger
+    if @user.update(update_params)
+      redirect_to cadastros_path, notice: "Dados alterados com sucesso."
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -50,6 +55,10 @@ class CadastrosController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nome, :matricula, :email, :cargo, :password, :password_confirmation)
+  end
+
+  def update_params
+    params.require(:user).permit(:email)
   end
 
 end

@@ -19,9 +19,9 @@
           <span style="color:white">Olá, <%= current_user.nome %> | <%= current_user.matricula %> | <%= current_user.email %> | <%= current_user.cargo %></span>
 
           <div class="btn-group">
-            <%= button_to "Editar e-mail", '#', :class => "btn btn-outline-light border-0 rounded-0", :method => :get %>
-            <%= button_to "Cadastrar novo usuário", cadastros_path, :class => "btn btn-outline-light border-0 rounded-0", :method => :get %>
-            <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-outline-light border-0 rounded-0" %>
+            <%= link_to "Editar e-mail", '#', :class => "btn btn-outline-light border-0 rounded-0", :method => :get %>
+            <%= link_to "Cadastrar novo usuário", cadastros_path, :class => "btn btn-outline-light border-0 rounded-0", :method => :get %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-outline-light border-0 rounded-0" %>
           </div>
         </nav>
       <% end %>

@@ -13,6 +13,7 @@
           <th scope="col">User ID</th>
           <th scope="col">Nome</th>
           <th scope="col">Matrícula</th>
+          <th scope="col">Email</th>
           <th scope="col">Cargo</th>
           <th colspan="2" scope="colgroup">Controles</th>
         </tr>
@@ -23,9 +24,10 @@
             <th scope="row"><%= user.id %></th>
             <td><%= user.nome %></td>
             <td><%= user.matricula %></td>
+            <td><%= user.email %></td>
             <td><%= user.cargo %></td>
             <% if user.cargo == "Admin" || user.cargo == "Secretaria" || user.cargo.nil? %>
-              <td class="text-center"><%= link_to 'Editar', '#', :class=>"btn btn-secondary btn-sm" %></td>
+              <td class="text-center"><%= link_to 'Editar', edit_cadastro_path(user), :class=>"btn btn-secondary btn-sm" %></td>
               <td class="text-center"><%= link_to 'Remover', '#', :class=>"btn btn-danger btn-sm" %></td>
             <% end %>
           </tr>
