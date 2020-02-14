@@ -2,7 +2,7 @@ class CadastrosController < ApplicationController
   before_action :authorize_admin, only: :create
 
   def index
-    @users = User.all
+    @users = User.accessible_by(current_ability)
   end
 
   def show
@@ -18,6 +18,7 @@ class CadastrosController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
       redirect_to root_path, notice: "Usuário cadastrado com sucesso."
     else
@@ -27,7 +28,7 @@ class CadastrosController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    debugger
+
     if @user.update(update_params)
       redirect_to cadastros_path, notice: "Dados alterados com sucesso."
     else
