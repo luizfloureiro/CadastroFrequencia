@@ -1,0 +1,72 @@
+<div class="container">
+  <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Nova Turma</h2>
+
+  <%= form_with model: @turma do |f| %>
+    <div class="container">
+
+
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :nome, "Nome", class:"sr-only" %><br>
+          <%= f.text_field :nome, autofocus: true, class: "form-control", id: "inputNome" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <div class="field">
+              <%= f.label :inicio, "Horário Início" %><br>
+              <%= f.text_field :inicio, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <div class="field">
+              <%= f.label :fim, "Horário Fim" %><br>
+              <%= f.text_field :fim, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <%= f.label :cargamin, "Carga Horária Mínima" %><br>
+            <%= f.text_field :cargamin, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <%= f.label :cargamin, "Carga Horária Máxima" %><br>
+            <%= f.text_field :cargamax, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <%= f.label :nome, "Capacidade" %><br>
+            <%= f.text_field :capacidade, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <%= f.label :dias, "Dias da Semana" %><br>
+            <%= f.select :dias, Turma::dias.keys.to_a %>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <%= f.submit 'Salvar Turma', class: "btn btn-lg btn-outline-primary" %>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>

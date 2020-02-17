@@ -1,0 +1,35 @@
+<h1>Turmas</h1>
+
+<table class="table table-bordered table-hover table-responsive-sm">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Turma ID</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Dia da Semana</th>
+    <th scope="col">Início</th>
+    <th scope="col">Fim</th>
+    <th scope="col">Carga Mínima</th>
+    <th scope="col">Carga Máxima</th>
+    <th scope="col">Capacidade</th>
+    <th colspan="2" scope="colgroup">Controles</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @turmas.each do |turma| %>
+    <tr>
+      <th scope="row"><%= turma.id %></th>
+      <td><%= turma.nome %></td>
+      <td><%= turma.dias %></td>
+      <td><%= turma.inicio.strftime('%H:%M') %></td>
+      <td><%= turma.fim.strftime('%H:%M') %></td>
+      <td><%= turma.cargamin %>hrs</td>
+      <td><%= turma.cargamax %>hrs</td>
+      <td><%= turma.capacidade %></td>
+      <td class="text-center"><%= link_to 'Editar', '#', class: "btn btn-secondary btn-sm" %></td>
+      <td class="text-center"><%= link_to 'Remover', turma_path(turma), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nova Turma', new_turma_path %>

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_172821) do
+ActiveRecord::Schema.define(version: 2020_02_17_173748) do
+
+  create_table "turmas", force: :cascade do |t|
+    t.string "nome"
+    t.integer "dias"
+    t.time "inicio"
+    t.time "fim"
+    t.integer "cargamin"
+    t.integer "cargamax"
+    t.integer "capacidade"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

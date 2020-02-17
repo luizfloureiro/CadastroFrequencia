@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :cadastros
+  resources :turmas
 
   get 'home/index'
   root 'home#index'

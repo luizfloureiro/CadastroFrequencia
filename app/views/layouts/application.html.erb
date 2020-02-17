@@ -16,12 +16,17 @@
       <% if current_user %>
         <nav class="navbar sticky-top navbar-dark bg-dark">
           <a class="navbar-brand" href="/">Abc</a>
-          <span style="color:white">Olá, <%= current_user.nome %> | <%= current_user.matricula %> | <%= current_user.email %> | <%= current_user.cargo %></span>
+          <span class="navbar-text">Olá, <%= current_user.nome %> | <%= current_user.cargo %></span>
 
           <div class="btn-group">
-            <%= link_to "Editar e-mail", '#', :class => "btn btn-outline-light border-0 rounded-0", :method => :get %>
-            <%= link_to "Manejar Usuários", cadastros_path, :class => "btn btn-outline-light border-0 rounded-0", :method => :get %>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-outline-light border-0 rounded-0" %>
+            <%= link_to 'Editar e-mail', '#', class: 'btn btn-outline-light border-0 rounded-0' %>
+            <% if current_user.admin? %>
+              <%= link_to 'Manejar Usuários', cadastros_path, class: 'btn btn-outline-light border-0 rounded-0' %>
+            <% elsif current_user.secretaria? %>
+              <%= link_to 'Manejar Professores', cadastros_path, class: 'btn btn-outline-light border-0 rounded-0' %>
+              <%= link_to 'Manejar Turmas', turmas_path, class: 'btn btn-outline-light border-0 rounded-0' %>
+            <% end %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-light border-0 rounded-0' %>
           </div>
         </nav>
       <% end %>
