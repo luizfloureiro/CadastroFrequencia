@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attr_accessor :login
 
+  has_many :turmas
+
   validates_presence_of :nome
   validates_uniqueness_of :nome
 
