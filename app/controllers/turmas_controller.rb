@@ -5,6 +5,7 @@ class TurmasController < ApplicationController
   end
 
   def show
+    @turma = Turma.find(params[:id])
   end
 
   def new

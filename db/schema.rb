@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_173748) do
+ActiveRecord::Schema.define(version: 2020_02_18_175514) do
+
+  create_table "alunos", force: :cascade do |t|
+    t.string "nome"
+    t.string "matricula"
+    t.string "email"
+    t.integer "turma_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["turma_id"], name: "index_alunos_on_turma_id"
+  end
 
   create_table "turmas", force: :cascade do |t|
     t.string "nome"
@@ -39,4 +49,5 @@ ActiveRecord::Schema.define(version: 2020_02_17_173748) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alunos", "turmas"
 end

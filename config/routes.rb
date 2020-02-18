@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :cadastros
-  resources :turmas
+  resources :turmas do
+    resources :alunos
+  end
 
   get 'home/index'
   root 'home#index'
