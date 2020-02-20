@@ -30,7 +30,11 @@ class CadastrosController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(update_params)
-      redirect_to cadastros_path, notice: "Dados alterados com sucesso."
+      if @user.professor?
+        redirect_to root_path, notice: "Dados alterados com sucesso!"
+      else
+        redirect_to cadastros_path, notice: "Dados alterados com sucesso."
+      end
     else
       render :edit
     end

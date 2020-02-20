@@ -19,7 +19,7 @@
           <span class="navbar-text">Olá, <%= current_user.nome %> | <%= current_user.cargo %></span>
 
           <div class="btn-group">
-            <%= link_to 'Editar e-mail', '#', class: 'btn btn-outline-light border-0 rounded-0' %>
+            <%= link_to 'Editar e-mail', edit_cadastro_path(current_user.id), class: 'btn btn-outline-light border-0 rounded-0' %>
             <% if current_user.admin? %>
               <%= link_to 'Manejar Usuários', cadastros_path, class: 'btn btn-outline-light border-0 rounded-0' %>
             <% elsif current_user.secretaria? %>

@@ -35,7 +35,7 @@
               <td><%= aluno.nome %></td>
               <td><%= aluno.matricula %></td>
               <td><%= aluno.email %></td>
-              <td class="text-center"><%= link_to 'Editar', '#', class: "btn btn-secondary btn-sm" %></td>
+              <td class="text-center"><%= link_to 'Editar', edit_turma_aluno_path(@turma, aluno), class: "btn btn-secondary btn-sm" %></td>
               <td class="text-center"><%= link_to 'Remover', [aluno.turma, aluno], method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %></td>
             </tr>
           <% end %>
