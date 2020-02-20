@@ -9,8 +9,10 @@
       <li class="list-group-item text-center">Carga Horária Mínima: <%= @turma.cargamin %>hrs | Carga Horária Máxima: <%= @turma.cargamax %>hrs </li>
       <li class="list-group-item text-center">Dia da semana: <%= @turma.dias %></li>
       <li class="list-group-item text-center">Capacidade: <%= @turma.capacidade %> alunos<span class="text-muted"> (<%= vagas_restando(@turma) %> restando)</span></li>
-      <li class="list-group-item text-center">Professor: [nomeprofessor]</li>
+      <li class="list-group-item text-center"><% if @turma.user_id.nil? %>Professor: [Não Alocado]<% else %>Professor: <%=User.find(@turma.user_id).nome%><% end %></li>
+      <li class="list-group-item text-center"><%= link_to 'Editar', edit_turma_path(@turma), class: "btn btn-primary" %></li>
     </ul>
+
 
     <% if @turma.alunos.count != 0 %>
       <div class="containter pb-2">

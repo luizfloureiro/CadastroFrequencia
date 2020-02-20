@@ -18,6 +18,7 @@
       <th scope="col">Carga Mínima</th>
       <th scope="col">Carga Máxima</th>
       <th scope="col">Capacidade</th>
+      <th scope="col">Inscritos</th>
       <th colspan="3" scope="colgroup">Controles</th>
     </tr>
     </thead>
@@ -32,8 +33,9 @@
         <td><%= turma.cargamin %>hrs</td>
         <td><%= turma.cargamax %>hrs</td>
         <td><%= turma.capacidade %></td>
+        <td><%= turma.alunos.count %></td>
         <td class="text-center"><%= link_to 'Exibir', turma_path(turma), class: "btn btn-primary btn-sm" %></td>
-        <td class="text-center"><%= link_to 'Editar', '#', class: "btn btn-secondary btn-sm" %></td>
+        <td class="text-center"><%= link_to 'Editar', edit_turma_path(turma), class: "btn btn-secondary btn-sm" %></td>
         <td class="text-center"><%= link_to 'Remover', turma_path(turma), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>

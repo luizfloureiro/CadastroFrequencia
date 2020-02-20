@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Nova Turma</h2>
+  <h2 class="text-center pb-2 mt-4 mb-2 border-bottom">Editar Turma</h2>
 
   <% if @turma.errors.any? %>
     <div id="error_explanation">
@@ -20,7 +20,7 @@
 
       <div class="form-group">
         <div class="field">
-          <%= f.label :nome, "Nome", class:"sr-only" %><br>
+          <%= f.label :nome, "Nome" %><br>
           <%= f.text_field :nome, autofocus: true, class: "form-control", id: "inputNome" %>
         </div>
       </div>
@@ -75,11 +75,15 @@
         </div>
       </div>
 
+      <div class="row">
+        <%= f.label :user_id, "Professor" %><br>
+        <%= f.select :user_id, prof_disponiveis(@turma) %>
+      </div>
+
       <div class="text-center">
         <%= f.submit 'Salvar Turma', class: "btn btn-lg btn-outline-primary" %>
       </div>
 
     </div>
   <% end %>
-
 </div>

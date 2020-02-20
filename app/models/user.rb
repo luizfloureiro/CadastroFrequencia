@@ -14,6 +14,12 @@ class User < ApplicationRecord
   validates_presence_of :matricula
   validates_uniqueness_of :matricula
 
+  scope :cargo, -> (cargo) {where(cargo: cargo)}
+
+  scope :disponiveis, -> (turma) do
+    left_outer_joins(:turmas).cargo("Professor").merge(Turma.disponiveis(turma.inicio, turma.fim, turma.dias, turma.id).or(where("turmas.id is NULL")))
+  end
+
   def admin?
     self.cargo == "Admin"
   end

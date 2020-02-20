@@ -12,6 +12,10 @@ class TurmasController < ApplicationController
     @turma = Turma.new
   end
 
+  def edit
+    @turma = Turma.find(params[:id])
+  end
+
   def create
     @turma = Turma.new(turma_params)
 
@@ -19,6 +23,16 @@ class TurmasController < ApplicationController
       redirect_to turmas_path, notice: "Turma criada com sucesso!"
     else
       render 'new'
+    end
+  end
+
+  def update
+    @turma = Turma.find(params[:id])
+
+    if @turma.update(turma_edit_params)
+      redirect_to turmas_path
+    else
+      render 'edit'
     end
   end
 
@@ -35,5 +49,9 @@ class TurmasController < ApplicationController
   private
   def turma_params
     params.require(:turma).permit(:nome, :dias, :inicio, :fim, :cargamin, :cargamax, :capacidade)
+  end
+
+  def turma_edit_params
+    params.require(:turma).permit(:nome, :dias, :inicio, :fim, :cargamin, :cargamax, :capacidade, :user_id)
   end
 end
