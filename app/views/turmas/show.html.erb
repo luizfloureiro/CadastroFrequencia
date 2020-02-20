@@ -5,8 +5,26 @@
 
     <ul class="list-group shadow pb-2">
       <li class="list-group-item lead text-center"><%= @turma.nome %></li>
-      <li class="list-group-item text-center">Início: <%= @turma.inicio.strftime('%H:%M') %> | Fim: <%= @turma.fim.strftime('%H:%M') %></li>
-      <li class="list-group-item text-center">Carga Horária Mínima: <%= @turma.cargamin %>hrs | Carga Horária Máxima: <%= @turma.cargamax %>hrs </li>
+      <li class="list-group-item text-center">
+        <div class="row">
+          <div class="col">
+            Início: <%= @turma.inicio.strftime('%H:%M') %>
+          </div>
+          <div class="col">
+            Fim: <%= @turma.fim.strftime('%H:%M') %>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item text-center">
+        <div class="row">
+          <div class="col">
+            Carga Horária Mínima: <%= @turma.cargamin %>hrs
+          </div>
+          <div class="col">
+            Carga Horária Máxima: <%= @turma.cargamax %>hrs
+          </div>
+        </div>
+      </li>
       <li class="list-group-item text-center">Dia da semana: <%= @turma.dias %></li>
       <li class="list-group-item text-center">Capacidade: <%= @turma.capacidade %> alunos<span class="text-muted"> (<%= vagas_restando(@turma) %> restando)</span></li>
       <li class="list-group-item text-center"><% if @turma.user_id.nil? %>Professor: [Não Alocado]<% else %>Professor: <%=User.find(@turma.user_id).nome%><% end %></li>
