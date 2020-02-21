@@ -6,7 +6,6 @@ class Turma < ApplicationRecord
 
   validate :horario_deve_ser_valido
   validate :usuario_deve_ser_professor
-  validate :horario_professor_nao_conflita
 
   scope :dia_nao_conflitante, -> (dia) { where.not(dias: dia) }
   scope :dia_conflitante, -> (dia, id) { where(dias: dia).where.not(id: id) }
@@ -23,20 +22,6 @@ class Turma < ApplicationRecord
   def horario_deve_ser_valido
     if self.inicio >= self.fim
       errors.add(:horario_invalido, "horário de início não deve ser igual ou depois do horário de fim.")
-    end
-  end
-
-  def horario_professor_nao_conflita
-    unless user.nil?
-      if user.professor?
-        user.turmas.each do |turma|
-          if turma.dias == self.dias
-            if turma.dias.inicio > self.fim || turma.dias.fim < self.inicio
-              errors.add(:horario_conflitante, "horário não deve conflitar")
-            end
-          end
-        end
-      end
     end
   end
 

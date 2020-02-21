@@ -1,17 +1,12 @@
-require 'rspec'
+require 'rails_helper'
 
 describe 'TurmasHelper' do
-  before do
-    # Do nothing
-  end
-
-  after do
-    # Do nothing
-  end
-
-  context 'when condition' do
-    it 'succeeds' do
-      pending 'Not implemented'
+  describe 'methods' do
+    context '.vagas_restando(turma)' do
+      let(:turma) { Turma.new(capacidade: 10) }
+      it 'deve pluralizar vaga' do
+        expect(helper.vagas_restando(turma))
+      end
     end
   end
 end

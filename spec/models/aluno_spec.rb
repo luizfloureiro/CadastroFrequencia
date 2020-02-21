@@ -9,6 +9,10 @@ describe 'Aluno' do
   end
 
   describe 'validations' do
+    before do
+      turma = create :turma
+      aluno.turma = turma
+    end
     it { is_expected.to validate_presence_of(:nome) }
 
     it { is_expected.to validate_presence_of(:matricula) }
