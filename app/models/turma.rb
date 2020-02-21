@@ -4,6 +4,13 @@ class Turma < ApplicationRecord
 
   enum dias: [:Domingo, :Segunda, :Terça, :Quarta, :Quinta, :Sexta, :Sábado]
 
+  validates_presence_of :nome
+  validates_presence_of :inicio
+  validates_presence_of :fim
+  validates_presence_of :cargamin
+  validates_presence_of :cargamax
+  validates_presence_of :capacidade
+
   validate :horario_deve_ser_valido
   validate :usuario_deve_ser_professor
 
