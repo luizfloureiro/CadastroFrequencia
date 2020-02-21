@@ -9,7 +9,7 @@ describe 'Turma' do
   end
 
   describe 'validations' do
-    it { is_expected.to define_enum_for(:dias).with(%i[Domingo Segunda Terça Quarta Quinta Sexta Sábado]) }
+    it { is_expected.to define_enum_for(:dias).with_values(%i[Domingo Segunda Terça Quarta Quinta Sexta Sábado]) }
     it { is_expected.to validate_presence_of(:nome) }
     it { is_expected.to validate_presence_of(:inicio) }
     it { is_expected.to validate_presence_of(:fim) }
